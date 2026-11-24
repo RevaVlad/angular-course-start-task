@@ -8,4 +8,12 @@ import { Component, output } from '@angular/core';
 })
 export class SearchBarComponent {
   readonly termChanged = output<string>();
+
+  onSearchChanged(event: Event) {
+    const target = event.target as HTMLInputElement;
+
+    if (target) {
+      this.termChanged.emit(target.value);
+    }
+  }
 }

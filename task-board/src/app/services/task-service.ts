@@ -1,4 +1,4 @@
-import { Service, Signal, signal } from '@angular/core';
+import { Service, signal } from '@angular/core';
 import { Task } from '../types/task.model';
 
 @Service()
@@ -26,7 +26,7 @@ export class TaskService {
 
   toggle(id: number) {
     this.tasks.update((tasks) =>
-      this.tasks().map((t) => {
+      tasks.map((t) => {
         if (t.id === id) {
           t.done = !t.done;
         }

@@ -88,9 +88,9 @@ Task: ng g interface task --type=model
 
 TaskService: ng g service task-service
 
-TaskList: ng g c --type=component components/task-list --change-detection=onPush
+TaskList: ng g c --type=component components/task-list --change-detection=OnPush
 
-TaskItem: ng g c --type=component components/task-item --inline-style --inline-template --change-detection=onPush
+TaskItem: ng g c --type=component components/task-item --inline-style --inline-template --change-detection=OnPush
 
 TimeAgo: ng g pipe time-ago
 

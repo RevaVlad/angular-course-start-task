@@ -4,11 +4,13 @@ import { HighlightedTextToken } from '../../types/highlighted-text-token';
 @Component({
   imports: [],
   selector: 'app-highlighted-text',
-  styles: ``,
   template: `
     @for (token of tokens(); track $index) {
-      @if (token.isHighlighted) {<mark>{{ token.text }}</mark> }
-      @else {{{ token.text }}}
+      @if (token.isHighlighted) {
+        <mark>{{ token.text }}</mark>
+      } @else {
+        <span>{{ token.text }}</span>
+      }
     }
   `,
 })

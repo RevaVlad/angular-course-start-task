@@ -7,7 +7,7 @@ import { HighlightedTextComponent } from '../highlighted-text/highlighted-text.c
   imports: [TimeAgoPipe, HighlightedTextComponent],
   selector: 'app-task-item',
   styles: `
-    .task {
+    .container {
       background: var(--surface);
       outline: 2px solid var(--border-color);
       border-radius: var(--border-radius);
@@ -20,19 +20,19 @@ import { HighlightedTextComponent } from '../highlighted-text/highlighted-text.c
       width: 100%;
     }
 
-    .task:hover {
+    .container:hover {
       outline-color: var(--accent);
     }
 
-    .task--done {
+    .done {
       outline-color: var(--accent);
     }
 
-    .task--done:hover {
+    .done:hover {
       outline-color: var(--accent);
     }
 
-    .task__title {
+    .title {
       margin: 0;
       margin-bottom: 8px;
       font-size: 32px;
@@ -40,7 +40,7 @@ import { HighlightedTextComponent } from '../highlighted-text/highlighted-text.c
       width: fit-content;
     }
 
-    .task__title::after {
+    .title::after {
       content: '';
       position: absolute;
       width: 0;
@@ -51,11 +51,11 @@ import { HighlightedTextComponent } from '../highlighted-text/highlighted-text.c
       transition: width 0.3s ease-out;
     }
 
-    .task__title--done::after {
+    .title-done::after {
       width: 100%;
     }
 
-    .task__checkbox {
+    .checkbox {
       cursor: pointer;
       position: absolute;
       right: 20px;
@@ -65,8 +65,8 @@ import { HighlightedTextComponent } from '../highlighted-text/highlighted-text.c
     }
   `,
   template: `
-    <div class="task" [class.task--done]="task().done">
-      <h3 class="task__title" [class.task__title--done]="task().done">
+    <div class="container" [class.done]="task().done">
+      <h3 class="title" [class.title-done]="task().done">
         <app-highlighted-text
           [text]="task().title"
           [highlightTerm]="highlightTerm() || ''"
@@ -74,7 +74,7 @@ import { HighlightedTextComponent } from '../highlighted-text/highlighted-text.c
       </h3>
       <time [attr.datetime]="task().createdAt.toISOString()">{{ task().createdAt | timeAgo }}</time>
       <input
-        class="task__checkbox"
+        class="checkbox"
         type="checkbox"
         [checked]="task().done"
         (change)="toggled.emit(task().id)"
